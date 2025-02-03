@@ -108,3 +108,45 @@ public class TwoSum {
     return -1;
        }
     }    
+
+Infinite sorted array: 
+
+public class infiniteArr {
+    public static void main(String args[]) {
+      int[] arr = {2, 3, 4, 5, 7, 12, 16, 17, 33, 36, 40, 45};
+      int target = 33;
+      
+          // 9
+      System.out.println("target is at index " +Double(arr, target));
+    }
+
+    static int Double(int arr[], int target){
+        
+        int start = 0;
+        int end = 1;
+        
+        while (end < arr.length && target >= arr[end]){
+            int newStart = end + 1;
+            end = end + (end- start + 1)*2;
+            start = newStart;
+        }
+        return findTarget(arr, target, start, end);
+    }
+
+    static int findTarget(int[] arr, int target, int start, int end) {
+    
+    while(start <= end){
+    int mid = start + (end - start) / 2;
+
+    if(target > arr[mid] ) {
+        start = mid + 1;
+    } else if(target < arr[mid]){
+        end = mid - 1;
+    } else {
+        return mid;
+    }
+
+    }
+    return -1;
+    }
+}
